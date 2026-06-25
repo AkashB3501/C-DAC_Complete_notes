@@ -1,0 +1,2256 @@
+Module: OOPJ
+------------------------------
+Date: 25/08/2025
+Day 1 : Introduction to Java
+------------------------------
+Topics: 
+	-Foundation of Java
+	-Basic concepts
+	-Flow of Execution
+	-JVM, JDK and JRE
+	-Programs : Java
+
+Java:
+------
+-high level language, Object oriented, platform independent programming language.
+-James Gosling ,Sun Microsystem,1995
+
+Programming language:
+	-OOP : support  classes, objects, inheritance, encapsulation, abstraction, polymorphism
+	-Platform independent: WORA=> Write once and run anywhere
+	-Strongly type
+	-Rich standard library
+	-Robust and secure
+	-Multithreaded programming
+
+Technology
+	-A broader concept involving tools and platforms and methodologies
+Framework
+	-A structured collection of code that simplifies development
+	
+	-Java EE / Jakarta EE
+	-Spring framework
+	-Hibernate ORM
+	
+Platform:
+	-JVM:Executes java programs
+	-JDK:Tools  for development of program
+	-JRE:Runtime environment
+	
+Editions:
+	-Java SE:Standard Edition 
+	-core programming and libraries
+	-DEsktop applicatios
+	
+	-Java EE:Enterprise Edition
+	-Enterprise & Server side programming
+	-WEb applications, APIs(Application Programming Interface), Microservice
+	
+	-Java ME:Micro Edition
+	-Embedded and Mobile applications
+	-IOT, Sensor, gamming applications
+	
+	JavaFX
+	-GUI and rich client applications
+	-Visual desktop applications, Dashboards
+	
+	JDK : Java DEvelopemnt Kit
+	-It is a software development environment used for developing Java applications.
+	-JDK is a superset of JRE (Java Runtime Environment), which includes tools for development and debugging.
+	
+	JRE: Java Runtime Environment
+	- JRE is a subset of JDK
+	-It provides the environment to run java program, but it doesnot contain any development tool.
+	-Componenets :
+		-JVM : Java virtual maachine: Execute the compiled bytecode
+		-core libaries: java.lang, java.net, java.sql, etc
+		-Other runtime files: Needed for Java programs to execute
+	
+	JIT Compiler:
+	-Convert bytecode into machine code at runtime to improve performance
+	-It is part of JVM
+	-Purpose is tp speed up execution of frequently used code
+	
+	Adv:
+	-Faster excution
+	-Adaptive performance optimization
+	-Code caching
+	-Balance interpretation and compilation
+	
+Java Token:
+	-Reserved words
+	-Identifiers
+		aa_member
+		aa1
+		aa$
+	
+	-Constants (Literals)
+	-Operators
+	-Separators
+ 
+Comments:
+	-Single line comment (//)
+	-Multi line comments (/*-----*/)
+
+White space:
+
+Data types:
+---------------
+1. byte: 1 byte = 8 bits
+Range : -128 to 127
+
+byte b =127;
+
+------------------------------
+2.short: 2 bytes = 16 bits
+Range : -32768 to 32767
+
+short s = 32767;
+------------------------------
+3.int: 4bytes = 32 bits
+Range: -2^31 to (2^31)-1
+
+16 bit processor :2 bytes
+32 bit processor :4 bytes
+------------------------------
+4.long =8bytes =64 bits
+Range: -2^63 tp (2^63)-1
+
+long l = 1230000*60*60*24*1000;
+
+----------------------------------
+1. float : 4bytes
+Range : +/-3.4E38
+PRecision: 5/6 decimals places
+0.0F
+
+------------------------------
+2. double : 8 bytes
+Range: +/- 1.7E308
+Precision: 14 /15 decimal places (Double precision)
+0.0D
+
+-------------------------------
+Boolean: Size: NA
+Range: NA (true or false)
+Case sensitive: true/false
+
+boolean b = 0;//Err: Incompatible
+
+C/C++ = false=0, true=1
+Java = true / false
+
+
+boolean b = "false";
+
+Ex:
+int x=0;
+//boolean x=true;
+if(x)//Error
+{
+
+}
+Ex:
+while(1){ //Error
+
+
+}
+------------------------------
+char data type:
+C/C++ = char = 1bytes (support ASCII characters)
+Java:
+Size: 2 bytes (supports unicode character)unicode = global characters.
+
+'\u0000' : Representation of unicode characters
+
+------------------------------
+Java command:
+set JAVA_HOME=C:\Program Files\Java\jdk-21
+set PATH=%JAVA_HOME%\bin;%PATH%
+------------------------------
+OOPJ Module
+-----------------
+Meeting Id: 81940226085
+Key: 12345
+------------------------------
+Date: 26/08/2025
+Day 2 : OOPJ
+------------------------------
+Topics: 
+	-Java Tokens: keywords, identifiers, literals, operators
+	-Declaring variables and methods
+	-Data type compatibility
+	-Programs
+
+
+JVM : Java Virtual Machine:
+
+1. Class Loader System:
+-Responsible for loading classes into memory
+	-Bootstrap class loader
+	-Extension Class loader
+	-System (Application) class loader
+	-Custom class Loader
+
+2. Runtime Data Access (Memory)
+-These memory regions are managed by JVM at runtime.
+	-Method Area:
+		-Stores the class level data
+		-Share among all threads
+		
+	-Heap:
+		-Stores all objects and their instance variables
+		-Share among all threads
+		
+	-Java Stack:
+		-Stores frames for each method call(local variables, intermediate values)
+		-Each thread has its own stack
+		
+	-PC Register:Program Counter Register
+		-Stores the current instructions address being executed for each thread.
+		
+	-Native Methods Stack:
+		-Support native (non-java) method execution written C/C++
+		
+3. Execution Engine:
+	-Just-In-Time (JIT) Compiler
+		-Converts bytecode into native machine code at runtime
+		-Improves performance by caching compiled code
+		
+	-Interpreter
+		-Read and excute bytecode line by line
+		-Slower compared to compiled code
+		
+	-Garbage Collector (GC)
+		-Automatically reclaims memory used by unreachable objects
+		-Runs in the background to free Heap memory space.
+		
+	
+JVM Workflow:
+-------------
+1. Source code (.java) -> compiled by javac -> bytecode(.class)
+2. Class loader loads the .class file into JVM
+3. Bytecode verifies for security
+4. Loaded clases stored in Method area; objects store in Heap.
+5. Execution Engine excutes instructions using Interpreter or JIT
+6. Garbage Collector manages unsused objects.
+
+
+JVM Thread:
+-Main Thread: Execute the main() method
+	-User defined threads (Thread (class) or Runnable (interface))
+
+	public static void main(String args[]){}
+
+-Reference Habdler Thread
+-Finalizer Thread
+-Signal Dispachter Thread
+-Compiler Thread
+-Garbage Collector Thread
+-etc...
+
+Literals: Java Constants
+-A constant value assigned to a variable, is called as literal.
+Ex:
+
+	int x = 10;//10 is a literal
+
+Integral Literals:bye, short, int, long
+Ex:
+	1. Decimal literals: Base 10 (0-9)
+		int x =10;
+	 
+	 2. Octal Literals: Base 8 (0-7)
+		-Prefix : 0 (Zero)
+		Ex:
+			int x = 010
+			
+	3. Hexadecimal Literals : Base 16 (0-9, A-F)
+		Prefix: 0x or 0X
+		Ex:
+		
+			int x = 0x10;
+			int x = 0XFACE;
+	
+---------------------------------------------------------
+Floating Point Literals:
+
+-Default: double
+-float = suffix f/F
+-double = suffix d/D (optional)
+
+Ex: 
+	float f = 123.456f;
+	double d = 123456.789;
+	double d = 123456.789D;
+	float d = 123456.789F;
+	double d = OX123456.789; //NA: Error
+	double d = 1.2e35;
+	
+-------------------------------------------------
+Boolean Literals:
+-true or false
+Ex: 
+	boolean b = 0; //Error:
+
+----------------------------------------------
+character Literals: ' ': single quote
+Ex: 
+	char c = 'A';
+	
+unicode Representation : '\u0ABC'
+
+---------------------------------------
+Escape character:
+\n
+\t
+\b
+\'
+\"
+\\
+
+String Literals: 
+-Sequence of characters enclosed within double quotes ("")
+-In Java String : class
+Ex: String s1 = "kiran"; // String literal
+
+Separator: 
+[] : Array
+() : Methods
+{ }: Scope
+
+String Literals: 
+-Sequence of characters enclosed within double quotes ("")
+-In Java String : class
+Ex: String s1 = "kiran"; // String literal
+
+Separator: 
+[] : Array
+() : Methods
+{ }: Scope
+
+Wrapper class: Autoboxing and Unboxing
+
+byte -> Byte
+short -> ShortModule: OOPJ
+------------------------------
+Date: 25/08/2025
+Day 1 : Introduction to Java
+------------------------------
+Topics: 
+	-Foundation of Java
+	-Basic concepts
+	-Flow of Execution
+	-JVM, JDK and JRE
+	-Programs : Java
+
+Java:
+------
+-high level language, Object oriented, platform independent programming language.
+-James Gosling ,Sun Microsystem,1995
+
+Programming language:
+	-OOP : support  classes, objects, inheritance, encapsulation, abstraction, polymorphism
+	-Platform independent: WORA=> Write once and run anywhere
+	-Strongly type
+	-Rich standard library
+	-Robust and secure
+	-Multithreaded programming
+
+Technology
+	-A broader concept involving tools and platforms and methodologies
+Framework
+	-A structured collection of code that simplifies development
+	
+	-Java EE / Jakarta EE
+	-Spring framework
+	-Hibernate ORM
+	
+Platform:
+	-JVM:Executes java programs
+	-JDK:Tools  for development of program
+	-JRE:Runtime environment
+	
+Editions:
+	-Java SE:Standard Edition 
+	-core programming and libraries
+	-DEsktop applicatios
+	
+	-Java EE:Enterprise Edition
+	-Enterprise & Server side programming
+	-WEb applications, APIs(Application Programming Interface), Microservice
+	
+	-Java ME:Micro Edition
+	-Embedded and Mobile applications
+	-IOT, Sensor, gamming applications
+	
+	JavaFX
+	-GUI and rich client applications
+	-Visual desktop applications, Dashboards
+	
+	JDK : Java DEvelopemnt Kit
+	-It is a software development environment used for developing Java applications.
+	-JDK is a superset of JRE (Java Runtime Environment), which includes tools for development and debugging.
+	
+	JRE: Java Runtime Environment
+	- JRE is a subset of JDK
+	-It provides the environment to run java program, but it doesnot contain any development tool.
+	-Componenets :
+		-JVM : Java virtual maachine: Execute the compiled bytecode
+		-core libaries: java.lang, java.net, java.sql, etc
+		-Other runtime files: Needed for Java programs to execute
+	
+	JIT Compiler:
+	-Convert bytecode into machine code at runtime to improve performance
+	-It is part of JVM
+	-Purpose is tp speed up execution of frequently used code
+	
+	Adv:
+	-Faster excution
+	-Adaptive performance optimization
+	-Code caching
+	-Balance interpretation and compilation
+	
+Java Token:
+	-Reserved words
+	-Identifiers
+		aa_member
+		aa1
+		aa$
+	
+	-Constants (Literals)
+	-Operators
+	-Separators
+ 
+Comments:
+	-Single line comment (//)
+	-Multi line comments (/*-----*/)
+
+White space:
+
+Data types:
+---------------
+1. byte: 1 byte = 8 bits
+Range : -128 to 127
+
+byte b =127;
+
+------------------------------
+2.short: 2 bytes = 16 bits
+Range : -32768 to 32767
+
+short s = 32767;
+------------------------------
+3.int: 4bytes = 32 bits
+Range: -2^31 to (2^31)-1
+
+16 bit processor :2 bytes
+32 bit processor :4 bytes
+------------------------------
+4.long =8bytes =64 bits
+Range: -2^63 tp (2^63)-1
+
+long l = 1230000*60*60*24*1000;
+
+----------------------------------
+1. float : 4bytes
+Range : +/-3.4E38
+PRecision: 5/6 decimals places
+0.0F
+
+------------------------------
+2. double : 8 bytes
+Range: +/- 1.7E308
+Precision: 14 /15 decimal places (Double precision)
+0.0D
+
+-------------------------------
+Boolean: Size: NA
+Range: NA (true or false)
+Case sensitive: true/false
+
+boolean b = 0;//Err: Incompatible
+
+C/C++ = false=0, true=1
+Java = true / false
+
+
+boolean b = "false";
+
+Ex:
+int x=0;
+//boolean x=true;
+if(x)//Error
+{
+
+}
+Ex:
+while(1){ //Error
+
+
+}
+------------------------------
+char data type:
+C/C++ = char = 1bytes (support ASCII characters)
+Java:
+Size: 2 bytes (supports unicode character)unicode = global characters.
+
+'\u0000' : Representation of unicode characters
+
+------------------------------
+Java command:
+set JAVA_HOME=C:\Program Files\Java\jdk-21
+set PATH=%JAVA_HOME%\bin;%PATH%
+------------------------------
+OOPJ Module
+-----------------
+Meeting Id: 81940226085
+Key: 12345
+------------------------------
+Date: 26/08/2025
+Day 2 : OOPJ
+------------------------------
+Topics: 
+	-Java Tokens: keywords, identifiers, literals, operators
+	-Declaring variables and methods
+	-Data type compatibility
+	-Programs
+
+
+JVM : Java Virtual Machine:
+
+1. Class Loader System:
+-Responsible for loading classes into memory
+	-Bootstrap class loader
+	-Extension Class loader
+	-System (Application) class loader
+	-Custom class Loader
+
+2. Runtime Data Access (Memory)
+-These memory regions are managed by JVM at runtime.
+	-Method Area:
+		-Stores the class level data
+		-Share among all threads
+		
+	-Heap:
+		-Stores all objects and their instance variables
+		-Share among all threads
+		
+	-Java Stack:
+		-Stores frames for each method call(local variables, intermediate values)
+		-Each thread has its own stack
+		
+	-PC Register:Program Counter Register
+		-Stores the current instructions address being executed for each thread.
+		
+	-Native Methods Stack:
+		-Support native (non-java) method execution written C/C++
+		
+3. Execution Engine:
+	-Just-In-Time (JIT) Compiler
+		-Converts bytecode into native machine code at runtime
+		-Improves performance by caching compiled code
+		
+	-Interpreter
+		-Read and excute bytecode line by line
+		-Slower compared to compiled code
+		
+	-Garbage Collector (GC)
+		-Automatically reclaims memory used by unreachable objects
+		-Runs in the background to free Heap memory space.
+		
+	
+JVM Workflow:
+-------------
+1. Source code (.java) -> compiled by javac -> bytecode(.class)
+2. Class loader loads the .class file into JVM
+3. Bytecode verifies for security
+4. Loaded clases stored in Method area; objects store in Heap.
+5. Execution Engine excutes instructions using Interpreter or JIT
+6. Garbage Collector manages unsused objects.
+
+
+JVM Thread:
+-Main Thread: Execute the main() method
+	-User defined threads (Thread (class) or Runnable (interface))
+
+	public static void main(String args[]){}
+
+-Reference Habdler Thread
+-Finalizer Thread
+-Signal Dispachter Thread
+-Compiler Thread
+-Garbage Collector Thread
+-etc...
+
+Literals: Java Constants
+-A constant value assigned to a variable, is called as literal.
+Ex:
+
+	int x = 10;//10 is a literal
+
+Integral Literals:bye, short, int, long
+Ex:
+	1. Decimal literals: Base 10 (0-9)
+		int x =10;
+	 
+	 2. Octal Literals: Base 8 (0-7)
+		-Prefix : 0 (Zero)
+		Ex:
+			int x = 010
+			
+	3. Hexadecimal Literals : Base 16 (0-9, A-F)
+		Prefix: 0x or 0X
+		Ex:
+		
+			int x = 0x10;
+			int x = 0XFACE;
+	
+---------------------------------------------------------
+Floating Point Literals:
+
+-Default: double
+-float = suffix f/F
+-double = suffix d/D (optional)
+
+Ex: 
+	float f = 123.456f;
+	double d = 123456.789;
+	double d = 123456.789D;
+	float d = 123456.789F;
+	double d = OX123456.789; //NA: Error
+	double d = 1.2e35;
+	
+-------------------------------------------------
+Boolean Literals:
+-true or false
+Ex: 
+	boolean b = 0; //Error:
+
+----------------------------------------------
+character Literals: ' ': single quote
+Ex: 
+	char c = 'A';
+	
+unicode Representation : '\u0ABC'
+
+---------------------------------------
+Escape character:
+\n
+\t
+\b
+\'
+\"
+\\
+
+String Literals: 
+-Sequence of characters enclosed within double quotes ("")
+-In Java String : class
+Ex: String s1 = "kiran"; // String literal
+
+Separator: 
+[] : Array
+() : Methods
+{ }: Scope
+
+Wrapper class: Autoboxing and Unboxing
+
+byte -> Byte
+short -> Short
+int -> Integer
+long -> Long
+float -> Float
+double -> Double
+....
+
+Scanner class:
+methods:
+next()
+nextLine()
+nextInt()
+nextByte()
+nextShort()
+nextLong()
+nextFloat()
+nextDouble()
+
+------------------------------
+Date: 28/08/2025
+Day 3 : OOPJ
+------------------------------
+Topics-
+	-Class and Objects
+	-Variables
+	-Reference
+	-Programs
+
+OOP:Object Oriented Programming
+-------------------------------- 
+-OOP is a programming paradigm based on the concept of object which contain data(attributes) and methods(behaviour).
+-Java  follows the OOP paradigm, making it easy to organize and mange code effective.
+
+Class:
+-A class is a blueprint or template that defines the properties(attributes/fields)and behaviour (defined by methods) 
+
+Object:
+-An object is an instance of a class.
+
+Ex:
+ class Abc{
+	//Fields
+	Datatype variable;
+	
+	//Methods
+	void m1(){
+	
+	}
+ 
+ }
+ 
+ Syntax: 
+ Classname objectname = new Classname();
+ EX:
+ Abc a1 = new Abc();
+ 
+ ---------------------
+ Class : Blueprint/template 
+ Object : Instance of class
+ Fields : Variables inside the class
+ Methods : Functions inside the class
+ Constructors : Special method used to intialize objects.
+ 
+ Features of OOP:
+ ---------------------
+ 1.Object and Classes : Object are real world entities and classes are their blueprint
+ 2.Encapsulation : Data Hiding implementation details and expressing only necessary functionality.
+ 3.Abstraction : Simplifying complex system by focusing on essential details.
+ 4.Inheritance: Enabling code reuse by creating new classes from existing one.
+ 5.Polymorphism : Allowing one interface to be used for different implementations/
+ 
+ 2 Types of variable:
+ ----------------------
+ 1. Primitive Variables: stores the basic values
+ 
+ 2. Reference variable (Objects): Stores the memory address
+ 
+ 
+ Varibles: In java  variables are container which holds data/values.
+ 1. Local variables: within method, constructor, block
+ 2. Instance variables: DEclared inside the class but outside any method.
+ 3. Static varibles: Declared with static keyword
+ 
+ 
+ Methods:
+ 1. Predefined methods
+	Math.random();// Generate random numbers
+ 
+ 2. Userdefined methods
+ 
+	void display(){
+		....
+		....
+		....
+	}
+	
+	return_type methodname(parameters){
+	
+		
+		return 0;
+	}
+	
+	Ex: void display(){
+	
+	
+	}
+	
+	Ex: int display(){
+		....
+		....
+		return sum;
+	
+	}
+	
+	Ex: boolean display(){
+		....
+		....
+		return true;
+	
+	}
+	
+	Static: keyword
+	-static variable
+	-static method
+	-static Blocks
+	-static class
+	
+	-make use of 'static' keyword
+	Ex: 
+	Static variable:
+	------------------
+	static int x=100;
+	
+	Static method:
+	------------------
+	static void display(){
+	.....
+	}
+	
+	Static block:
+	------------------
+	class Test{
+	
+		static{
+		
+		}
+	}
+	
+	Static class:
+	------------------
+	static class Abc{
+	
+	//Fields
+	//Methods
+	//Main(){}
+	
+	}
+	
+	Nesting of class:
+	------------------
+	class ABC{
+	
+		static class XYZ{
+		
+		
+		}
+	}
+
+
+------------------------------
+Date: 29/08/2025
+Day 4 : OOPJ
+------------------------------
+Topics-
+	-Programs
+	-Method overloading
+	-Constructor
+	
+
+Method Overloading:
+- Define multiple methods with same name but different parameters in the sameclass.
+- compile time polymorphism (static polymorphism)
+
+Rules of MEthod Overloading:
+
+1. Method names must be same.
+2. Must have different parameters.
+	a. Number of parameters
+	b. Type of prameter
+	c. Order of paramters
+3. Return type can be different, but only if parameter list is different
+4. Access modifiers can be different but not playing any role in distinguishing factor
+
+Ex: Not overloading
+
+int sum(int a, int b, int c){
+	return a+b+c;
+}
+
+double sum(double a, double b){
+	return a+b; //CE : 
+}
+
+
+Constructor:
+------------------
+-special method in java
+-used to initalize objects
+-It is automatically called when an object is created.
+-mainly used to set intial values for instance variables.
+
+Features:
+------------
+-name has to be same as class
+-No return type for contructors
+-invoked automatically
+
+Types of constructor:
+----------------------
+1.default
+2.parameterized
+
+'this' keyword:
+----------------
+this is a reference that refers to the current object of the class.
+
+this.variable = Refers to the current filed (instance variable)
+this() = call another constructor of same class (constructor chaining)
+
+------------------------------
+Date: 30/08/2025
+Day 5 : OOPJ
+------------------------------
+Topics-
+	-Constructors
+	-Date 
+	-Array
+
+	
+	
+	Example1 e1 = new Example1(); 
+		
+		
+	1. Object of same class:
+	-------------------------
+	Example1 e1 = new Example1(); 
+	
+	2. Null object:
+	----------------
+	Example1 e1 = null;
+	
+	3. Object of child class:
+	--------------------------
+	Example e1 = new Example1();
+	Parent p = new Child();
+	
+	Example e = new Example();
+	Example e1 = new Example();
+	Example e2 = new Example();
+	e = e1;
+	e1 = e2;
+	e2 = null;
+	e2 = new Example();
+	
+	Example e5;
+	e5 = e;
+		
+	e.x=5;
+	
+	Packages: Folders: classes, methods, properties, interface, subpackages
+	-A packages in java is a namespace that groups related classes, interfaces, subclasees, etc
+	
+	-helps in modularity, code reusability and maintaenance.
+	
+	Types of packages:
+	1. Built-in packages : predefined by java
+		-java.lang
+		-java.util
+		-java.sql
+		-java.time
+		etc....
+	
+	2.User-defined packeges : created by programmers
+		-helps to group related classes  into custom pakages.
+		
+	syntax: 
+	import java.lang.Array;
+	import java.util.Scanner;
+	import java.util.*;
+	
+	Access Modifiers :
+	-------------------
+	public: Accessible from anywhere
+	private: Accessible only within the class
+	protected: Accessible only within the same package
+	default: (no modifier) : Accessible only within the same packages.
+	
+	Date:
+	------
+	-Represent some specifict instancet in time.
+	-SimpleFormated: 'SimpleDateFormat' for formatting
+	-Constructor: 
+		-Date(): curretn date and time
+		-Date(long ms):specific time 
+	-Common Methods():
+		-long getTime():milliseconds 
+		-boolean before(Date d)/ after(Date d): compare dates
+		-int compareTo(Date d) : compare two dates
+		-toString() : human-readable string/ normal string
+	
+	Calendar:
+	---------
+	-Abstract class fro date manipulation (add, sub, day, diff)
+	-filed based access: YEAR, MONTH, DAY_OF_MONTH,...
+	-local time zone.
+	
+	Calandar cal = Calendar.getInstance();//Curretn date and time
+	
+	methods:
+	-get()
+	-set()
+	-add()
+	-getTime()
+	
+	Formated and parse dates:
+	common pattern: 
+		-dd/mm/yyyy : 30/08/2025
+		-yyyy-MM-DD HH:MM:SS : 2025-08-30 12:30:10
+		
+	Arrays:
+	-------
+	-homogenous  elements, indexed collection, sequential
+	
+	
+	
+	
+	
+	1. Declared an array
+		int arr[];
+	2. Create an array
+		arr[] = new int[5];
+		
+		Single Dimensional Array:
+		--------------------------
+		int arr[] = new int[5];
+		
+		int[] a; //Recommended
+		int a[];
+		int []a;
+		int[5] a; //Error: size not allowed in declaration
+		
+		Multi-Dimensional Array:
+		--------------------------
+		int arr[][] = new int[5][];
+		
+		int arr[][][] = new int[5][][];
+		
+		int[][] a; //2D
+		int []a[]; //allowed
+		int [][][] b; //3D
+		int []a, b;
+		int[] a[], b;
+		int[][] a, b;
+		int[][a,b];
+		
+		int arr[] = new int[5];
+		long ,float, double : array : HW
+		
+		int arr[] = new int[-5];//Error: Exception : NegativeArraysizeException
+		
+		Array Initialize:
+		----------------
+		int arr[] = new int[5];
+		
+		int[] num={1,2,3,4,5,6};
+		
+		Traversing:
+		-----------
+		for(int i=0;i<num.length;i++){
+			SOP(num[i]);
+		}
+
+		------------------------------
+Date: 01/09/2025
+Day 6 : OOPJ
+------------------------------
+Topics-
+	-Array
+	-Jagged Array
+----------------------
+A Jagged Array in Java is an array of arrays where each sub-array can have different lengths or sizes. Unlike rectangular 2D arrays, the number of columns in each row is not fixed.
+
+Example:
+
+int arr[][] = { {1, 2}, {3, 4, 5, 6}, {7, 8, 9} };
+Here,
+
+Row 1 has 2 elements
+Row 2 has 4 elements
+Row 3 has 3 elements
+
+Declaration:
+	int [] arr = {1,2,3};//1D array intialization
+	
+	int[][] mat = {
+		{1,2,3},
+		{11,22,33},
+		{21,22,23}
+		}; //2D array intialization
+		
+
+Date: 02/09/2025
+Day 7 : OOPJ
+------------------------------
+Topics-
+	-Array
+	-OOPS pillars
+	-Abstraction
+	-Encapsulation
+
+Deep copy and shallow copy:
+-------------------------------
+Shallow copy:
+
+-Copies the reference of the object , not the actual data.
+-Both the original and copied object point tot the same memory.
+-Changes in one object reflect in the other object.
+
+Deep Copy:
+-----------
+-Copies the actual data into a new object.
+-The original and copied objects are independent.
+-Changes in one object do not affect the other.
+
+OOPs:
+------
+1. Abstraction
+2. Encapsulation
+3. Inheritance
+4. Polymorphism
+
+Abstraction:
+-It is a process of hiding internal implementation details and showing only essential functionality to the user.
+
+Hw: Defn, real time examples :2, why we need abstraction, adv/benifits
+
+Key Features: 4ptrs
+-------------
+-hides complex details and shows only essential things.
+-achive abstraction using 'abstract' or 'interface'
+
+
+Techniques:
+---------------
+1.Abstract class (Partial abstraction)
+
+2.Interfaces (100% abstraction)
+
+Concrete class: 
+----------------
+-It is a fully implemented class in java.
+-It has all methods implemented (no abstract methods) and can be instantiated directly.
+-can create objects of the class
+-can contain instance variable, constructors and methods(fully implementd)
+-can extend abstract classes or implement interfaces.
+
+Anonymous class:
+----------------
+-An anonymous class is a class without a name, created on at runtime while instatiating objects.
+-It is often used to provide immediate implementation of abstract class or interface.
+-cannot have a constructor (because it has no name)
+-usually used for one-time use.
+
+Abstract class:
+----------------
+-declared class with 'abstract' keyword
+-can have abstract method(no body) and concrete methods (with body)
+-cannot instantiate abstract class diretly,require subclass(inheritance) 
+
+
+abstract class Book{
+	String title;
+	
+	abstract void display(); //abstract method
+	
+	
+	void show(){ //concrete method/instance method/non-static method
+		SOP (title);
+	}
+
+}
+
+class Bookdata extends Book{
+void display(){
+....
+}
+
+}
+
+HW:
+Abstraction
+Abstract class
+Abstract Method
+Adv
+Disadv
+Real-time eg.
+
+Abstract class vs interface
+
+
+Interface: (100% Abstraction)
+------------------------------
+-A blueprint for a class
+-contain abstract methods and constant
+-Classes implements interfaces using 'implements'.
+-From Java 8, interfaces can also have default(instance method) and static methods
+
+Ex:
+
+interface Shape{
+	int pi=3.14;
+	double area();//abstract method
+	void display(){
+	
+	}
+}
+
+class Demo implements Shape{
+
+}
+
+Encapsulation:
+--------------
+
+class: instance variable, method()
+
+
+-It is one of the fundamental principle of OOP that binds data and methods into single unit, hiding internal implementation details and providing controlled access through public methods.
+-combine data members and methods into single unit.
+-restricts direct access to data members.
+-provide public 'getter' and 'setter' methods to access and modify private data.
+-It ensures data hiding and data security.
+-Improves code reusability and modularity.
+
+Encapsulation implementation:
+-----------------------------
+1. Declaring instance variable as 'private'
+2. Providing 'getter-setter' methods to access and modify the private variables.
+3. Implementing data validation within setter methods.
+
+
+
+
+		1. Read matrix of 3X3
+		2. Read 2 matrix 3X3
+		3. Addition , print resultant matrix
+		4. Substraction , print resultant matrix
+		5. Multiplication , print resultant matrix
+		6. Transpose , print resultant matrix
+
+------------------------------
+Date: 03/09/2025
+Day 8 : OOPJ
+------------------------------
+Topics-
+	-Abstraction
+	-Encapsulation
+	-Inheritance
+	-Polymorphism
+	
+
+class: A blueprint for creating objects.
+Super class (Parent class) : The class whose properties are inherited
+Sub class (child class) : The class that inherits properties from another class
+Reusability: Using existing methods and filelds of a super class in a subclass.
+
+Inheritance: 
+-It is a mechanism in Java where a class(child class)  acquire properties(fields) and behaviour(methods) from another class (PArent class).
+-It promotes reusability, hierarcical organization and polymorphism
+-REpresents IS-A relationship
+-Helps avoid redundant code by reusing common functionalities.
+
+Syntax:
+
+class Parent{
+}
+
+
+class Child extends Parent{
+}
+
+
+class Demo extends Child{
+}
+
+Types of Inheritance:
+----------------------
+1. Single Inheritance
+2. Multilevel Inheritance
+3. Hierarchical Inheritance
+
+Object creation: 
+------------------
+1. Parent p = new Parent();
+
+2. Parent p = null;
+
+3. Parent p = new child();
+	Child c = new Parent();
+	
+Interface:
+-----------
+-A blueprint for a class
+-contain abstract methods and constants by default(Java 8)
+-cannot have a method body, only method declaration
+-need to achive 100% abstraction and multiple inheritance
+-Java 8: Interface can have default and static methods
+-Java 9: Interface can have private methods
+
+syntax:
+interface Name{
+	//cosntant variables ( implicit public, static, final)
+	//Abstract methods (implicit public and abstract)
+}
+
+interface Book{
+
+	//constant variable
+	int x=100;
+	//abstract method
+	void read();
+	//default method: Java 8+
+	void show(){
+	SOP()
+	}
+	//static method : Java 9+
+	static void display(){
+		SOP();
+	}
+	//Private methods : Java 9+
+	private void print(){
+	}
+	
+}
+
+Polymorphism:
+-----------------
+-Poly=many, morphism=forms : many forms
+-Types of polymorphism:
+	1. Compile time Polymorphism : Static
+		-method overloading
+		
+	2. Runtime Polymorphism : Dynamic 
+		-method overriding
+
+//MEthod overloading	: Compile time
+class XYZ{
+int sum(int a, int b){
+		return a+b;
+	}
+	int sum(int a, float b, int c){
+		return a+b+c;
+	}
+}
+
+class Abc{
+	int sum(int a, int b){
+		return a+b;
+	}
+	int sum(int a, float b, int c){
+		return a+b+c;
+	}
+}
+
+class Demo{
+
+Demo d = new Demo();
+d.sum();//Error
+
+Abc d1 = new Abc();
+d1.sum(2,3);
+d1.sum(2,3,4);
+
+Xyz d2 = new Xyz();
+d2.sum(2,3);
+d2.sum(2,3,4);
+}
+
+Rules for Overrriding:
+-------------------------
+1. Same method signature:
+-same name
+-same parameter list
+-same return type(covarient return type)
+
+2. Inheritance is manadatory
+-method overriding can occur when subclass inherits parent class
+
+3. Access modifiers
+private
+default
+protected
+public
+Ex: parent class= public : child class : public
+Ex: parent class= protected : child class :protected , public
+Ex: parent class= default : child class : default, protected , public
+
+Important Note: 
+---------------
+-private: cannot inherit 
+-satic: can be redefined but not overridden
+-final: cannot be override
+
+4. Constructors cannot be overriden
+
+HW: diff method overloading and overrriding (10pts)
+
+@Override: annotation:
+
+'super' keyword:
+-----------------
+-It is used to refer to the parent class(Super class)
+-It allows subclasses to access methods, constructors and fields of their parent class.
+	-To call the Superclass contructor: 'super()'
+	-To call the Superclass method: 'super.methodname()'
+	-To call the Superclass field: 'super.variablename'
+
+------------------------------
+Date: 03/09/2025
+Day 9 : OOPJ
+------------------------------
+Topics-
+	-Inheritance
+	-Polymorphism
+	-OVerriding
+	-Super
+	-Upcasting & downcasting
+	-instanceof
+	-Association
+
+Upcasting & downcasting:
+-key concept used in polymorphism anf type hierarchy
+
+Upcasting: converting child class  type reference into parent class type
+	-allows child class object to be treated as parent class object
+	A x = new B();// Upcasting
+	
+Downcasting: converting parent class type reference into child class type
+	-Enables calling of child class methods by converting parent class type into child class type
+	B y = (B) x;//Downcasting
+	
+
+Association:
+------------
+-Association represents a relationship between two separate classes that arerelated but can exist independently.
+-Type: 
+	-one-to-one
+	-one-to-many
+	-many-to-one
+	-many-to-many
+	
+Association:
+-----------------
+-RElationship between 2 classes
+--Type: 
+	-one-to-one
+	-one-to-many
+	-many-to-one
+	-many-to-many
+-Dependency: objects can exist independetly.
+-EX: Teacher-Student
+
+
+Aggregation:
+-------------
+-One class has a reference to another class
+-Weak Relationship
+-Dependency: Objects can exist independently
+-EX: Employee-Address
+
+
+Compostion:
+--------------
+-One class owns another class
+-Strong Relationship
+-Contained objects cannot exist without container
+-Dependency: Dependent: If container onject os destroyed then contained objects is also destroyed.
+-EX: Car-Engine
+
+
+------------------------------
+Date: 07/09/2025
+Day 10 : OOPJ
+------------------------------
+Topics-
+	-Final variable
+	-String
+	-Garbage collection
+	
+final, finalize() and finally
+
+'final' keyword:
+----------------
+final : In java used to restrict modifications 
+	1. Final variable:
+		-value cannot be changed(constant)
+	2. Final Method:
+		-cannot override that method
+	3. Final class:
+		-cannot be inherited
+		
+	Use : 'final'
+	-------------
+	-final variables: constant
+	-final methods: overriding prevent
+	-final class: inheritance prevent
+	-final reference variable :reference should not change(but the object can be modified)
+	
+Garbage Collection in Java:
+-Garbage collection is an automatic process in which the JVM reclaims memory from objects that are no longer in use or not reachable.
+
+Key pointers:
+1. Helps in automatic memory management
+2. Uses the Garbage Collector (GC) to free up the heap memory
+3. Works on objects that are no longer required/ referenced
+
+Methods used for Garbage collections:
+-----------------------------------
+1. Sysytem.gc(); //Request GC to run
+
+2. Runtime.getRuntime().gc(); //Another way to request GC
+
+Techniques to make objecst eligible for GC:
+---------------------------------------------
+1. Nulling a reference variable:
+-Setting object reference to null, which makes it unreachable.
+
+A a1 = new A();
+A a2 = new A();
+a1 = null;
+a2 = null;
+
+2.Re-Assigning  a reference variable
+-Object reference is re assigned to another object, the previous object becouse unreachable.
+
+A a1 = new A();
+A a2 = new A();
+A a3 = new A();
+A a4 = new A();
+
+a1 = a2;
+a3 = a4
+a2 = a3
+a1 = a4
+
+3. Island of Isolation:
+-When object reference each other but are not reference elsewhere, they become unreachable
+
+A a1 = new A();
+A a2 = new A();
+A a3 = new A();
+
+a3 = a1;
+a1 = a2;
+a2 = a3;
+
+class A{
+	A a;//Reference
+	int x;
+	
+	p.s.v.main(){
+	
+	A a1 = new A();
+	A a2 = new A();
+	A a3 = new A();
+	
+	a1.a = a3;
+	a3.a = a2;
+	a2.a = a1;
+	
+	a1=null;
+	a2=null;
+	a3=null;
+	
+	
+	}
+}
+
+finalize():
+-It is called before an object is garbage collected to perform cleanup operations.
+-Object class
+-cleanup activities
+-Syntax:
+	protected void finalize(){
+		//Cleanup code
+	}
+	
+
+String:
+--------
+-It is an object thet represents a sequence of characters.
+-java.lang.String 
+-Immutable: cannot be changed  after creation
+-String Pool: stored in a special memory area called String Pool
+-Interface: Serializable, Comparable, CharSequence
+
+-2 ways:
+	-String literals (REcommaended way)
+	-new keyword ( creates a new object in heap memory)
+
+------------------------------
+Date: 08/09/2025
+Day 11 : OOPJ
+------------------------------
+Topics-
+	-String
+	-Wrapper class
+	-Exception Handling
+	
+
+String:
+--------
+-It is an object thet represents a sequence of characters.
+-java.lang.String 
+-Immutable: cannot be changed  after creation
+-String Pool: stored in a special memory area called String Pool
+-Interface: Serializable, Comparable, CharSequence
+
+-2 ways:
+	-String literals (REcommaended way)
+	-new keyword ( creates a new object in heap memory)
+	
+Important String Methods:
+--------------------------
+length() : REturn the length of the string
+charAt(index) :REturn character at a specific index
+substring(beginIndex, endIndex)): Extract substring
+conatains(str) : checks if string contains another string.
+indexOf(str): Return index of first occurance
+toLowerCase(): Converts to lowercase
+toUpperCase(): Converts to uppercase
+trim() : Removes leading and training spaces
+replace(old, new) : Replace a character or sequence
+reverse() : Revers the string
+
+
+String str = "Java Programming is interestring."
+str.reverse();
+
+StringBuilder:  (Mutable & Fast)
+----------------------------------
+-A mutable sequence of characters
+-Uses heap memory for storage
+-Performance: Quite faster than String class
+-Wheneve we need to modify the strings frequently in single threaded environmentwe can utilize STringBuilder.
+-Not a thread safe (not synchronized)
+
+
+StringBuffer:  (Mutable & Thread-safe)
+-----------------------------------------
+-Similar to StringBuilder, but thread-safe (synchronnized method)
+-Uses heap memory for storage
+-Performance: Slower than the StringBuilder
+-Whenever we need to modify the string frequently it modifies in multi-threaded environment.
+-Thread-safe (synchronized)
+
+
+intern():
+
+Wrapper class: 
+1. Autoboxing : Primitive data type --> Wrapper class object
+
+	int num =10;
+	Integer n1 = num;//Autoboxing (int-> Integer)
+
+2. Unboxing : Wrapper Class Object --> Primitive data type
+
+	Integer n1 = new Integer(20);
+	int num = n1; //Unboxing  (Integer --> int)
+	
+	parseXXX : String data ---> data type conversion
+	Integer.ValueOf() : Wrapper class data ---> data type
+	ShortValue()
+	
+Exception Handling:
+--------------------
+Error: System-level-problem, serious mistakes ,not meant for handled.
+-OutOfMemoryError
+	-Thrown when JVM cannot allocate memory
+-StackOverflowError
+	-Thrown when a method keeps calling itself recursively without a base condition.
+
+Exception: Application-level-problem, should be handled.
+-Exception handling is aa mechanism to handle runtime error and maintain the normal flow of the application.
+-Exception occurs when the normal execution flow is distrupted.
+-exception handling : mechanisum :try, catch, finally, throw, throws
+
+Types of Exception:
+-----------------
+1. Checked Exception: Compile-time Exception
+-Must be handled using try-catch  or declared using throws
+-Ex: IOException, ClassNotFoundException
+
+2. Unchecked Exception: Runtime Exceptions
+-Do not require mandatory handling
+-Ex: ArithmetheticException, ClassCastException
+
+------------------------------
+Date: 08/09/2025
+Day 12 : OOPJ
+------------------------------
+Topics-
+	-Exception Handling
+	-Unchecked Exception
+	-Checked Exception
+	-Userdefined Exception
+
+Topics: 
+	- Exception Handling
+Exception Handling:
+--------------------
+-Exception Handling in Java is a mechanism to handle runtime errors and maintain the normal flow of the application.
+-Exceptions occur when the normal execution flow is disrupted, such as invalid user input, file not found, division by zero, etc.
+-Java provides a robust exception-handling mechanism using try, catch, finally, throw, and throws.
+
+Exception:
+------------
+-An exception is an event that occurs during the execution of a program and disrupts the normal flow of instructions.
+-Exceptions are represented as objects in Java and belong to the java.lang.Exception class hierarchy.
+
+Ex: Exception Occurrence
+
+public class ExceptionExample {
+    public static void main(String[] args) {
+        int result = 10 / 0; // Throws ArithmeticException
+    }
+}
+
+
+O/P : Exception in thread "main" java.lang.ArithmeticException: / by zero
+
+Types of Exceptions:
+---------------------
+1. Checked Exceptions (Compile-time exceptions):
+
+	-Must be handled using try-catch or declared using throws.
+	-Examples: IOException, SQLException, FileNotFoundException.
+
+2. Unchecked Exceptions (Runtime exceptions)
+
+	-Do not require mandatory handling.
+	-Examples: NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException.
+
+Try-Catch Block:
+-----------------
+-Used to handle exceptions gracefully.
+Syntax:
+try {
+    // Code that may cause an exception
+} catch (ExceptionType e) {
+    // Handling code
+}
+
+Keywords in Exception Handling:
+-------------------------------
+try: Encloses code that might throw an exception.
+
+Syntax:
+	try {
+		// code that may throw an exception
+	}
+	
+catch:Catches and handles exceptions thrown in the try block.
+
+Syntax:
+	catch(ExceptionType e) {
+		// exception handling code
+	}
+	
+	
+finally:Executes code regardless of whether an exception was thrown or not; useful for cleanup.
+
+Syntax:
+finally {
+    // code that always executes
+}
+
+throw:Explicitly throws an exception.
+
+Syntax:
+	throw new ExceptionType("error message");	
+	
+throws:Declares that a method may throw one or more exceptions.
+
+Syntax:
+	public void myMethod() throws ExceptionType {
+		// method code
+	}
+
+try-with-resources:Automatically manages resource closing, introduced in Java 7.
+
+Syntax:
+	try (ResourceType resource = new ResourceType()) {
+		// work with resource
+	} catch(ExceptionType e) {
+		// handle exception
+	}
+	
+Finally Block:
+--------------
+The finally block always executes whether an exception occurs or not.
+Used for cleanup operations like closing files, database connections, etc.
+
+Ex: Using Finally Block
+
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int data = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught");
+        } finally {
+            System.out.println("Finally block executed");
+        }
+    }
+	
+Use of finally Block:
+---------------------
+-The finally block in Java is used for cleanup operations, such as closing a file, releasing database connections, or printing important messages. It executes regardless of whether an exception occurs or not.
+
+Remember:
+---------
+1. No Exception Occurs -> finally block executes after try.
+2. Exception Occurs, Not Handled ->	finally executes, then program crashes.
+3. Exception Occurs, Handled ->	catch handles the exception, finally executes, and program continues.
+4. System.exit(0) is Used -> finally does not execute.
+5. Used for Resource Cleanup->	Ensures resources (files, DB connections) are closed properly.
+
+1. Checked Exceptions
+---------------------
+Definition: Exceptions that are checked at compile-time.
+-Compiler forces you to handle them using try-catch or declare them using throws.
+-Usually occur due to external factors (like file, database, network).
+-Example: IOException, SQLException, ClassNotFoundException.
+
+import java.io.*;
+
+public class CheckedDemo {
+    public static void main(String[] args) {
+        try {
+            FileReader fr = new FileReader("file.txt"); // File may not exist
+        } catch (IOException e) {
+            System.out.println("Checked Exception caught: " + e);
+        }
+    }
+}
+
+2. Unchecked Exceptions
+-----------------------
+Definition: Exceptions that are not checked at compile-time.
+-They occur at runtime (programming mistakes).
+-The compiler does not force you to handle them.
+-Example: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException.
+
+public class UncheckedDemo {
+    public static void main(String[] args) {
+        int result = 10 / 0; // Will throw ArithmeticException at runtime
+        System.out.println("Result: " + result);
+    }
+}
+
+Remember:
+---------
+-Checked = "You MUST handle me at compile-time" (external problems).
+-Unchecked = "I’ll surprise you at runtime if you code wrongly." (bugs in logic).
+
+------------------------------
+Date: 08/09/2025
+Day 14 : OOPJ
+------------------------------
+Topics-
+	-Object class
+	-Packages
+	-Access Modifier
+	-Collections
+
+Object class:
+--------------
+-package : java.lang
+-root in hierarchy : every class directly or indirectly is accessing this object class.
+-If a class does not explicitly extends another class, it is considered as Object class.
+-Object class methods:
+	
+	-toString() : return string representation of the object
+	-equals()	: compares two objects for equality
+	-hashCode() : return hash code of the object
+	-------------------------------------------------
+	-clone()	: create clone of the object
+	-------------------------------------------------
+	-getClass() : returns the runtime name of class of the object
+	-------------------------------------------------
+	-finalize() : called by GC before object destruction
+	--------------------------------------------------
+	-wait()		: causes the current thread to wait
+	-notify()	: wakes up the thread on the object's monitor
+	-notifyAll() : wakes up all the thread waiting on the object's monitor
+	
+	Access Modifier:
+	-----------------
+	
+	-private : accessible only within the same class
+		-Scope: same class
+		-used to restrict access to classmember (fields & methods)
+		-Not accessible outside the class (even subclasses )
+		
+	-default : (no modifier) : accessible within the same package
+		-scope: same package
+		-useful when classes belongs to the same package
+		
+	-protected : accessible within the same package and by subclasses in different packages
+		-scope: acces in sam epackahe and in subclasses
+		-used with inheritance when child class need access to parent class 
+		
+	-public : accessible from anywhere
+	
+	Non-Access Modifier:
+	---------------------
+	-static
+	-final
+	-abstract
+	-sychronized
+	-volatile
+	-transient
+	-native
+	-strictfp
+---------------------------------------------------
+Collections:
+
+
+class Employee{
+	int id;
+	String name;
+	e1--->20 parameters
+	
+	int arr[] = new int[10000];
+	Employee e1;
+	
+	Array of Objects:
+	e[10000];
+
+}
+
+Java Collection :
+-----------------
+-a group of objects.
+
+
+Collection:
+-------------
+-Any group of individual objects which are represented as a single unit is known as the collection of the object.
+
+Framework:
+----------
+-A framework is set of classes and interfaces which provides readymade solutions  or architecture.
+
+Collection Framework:
+---------------------
+-Collection Framework is Java API (Application PRogramming Interface) which provides architecture to store and manipulate group of objects.
+
+CRUD: Create-Read-Update-Delete
+
+Java Collection Framework: (JCF)
+----------------------------------
+-Collection Framework is Java API (Application PRogramming Interface) which provides architecture to store and manipulate group of objects.
+
+
+Adv:
+---
+1. Dynamic in size
+2. In-built methods for manipulation
+3. Better performance and flexibility
+
+
+Collection: Root interface:
+-Extends Iterable class  and it's aparent of all collection interface.
+
+List:
+	-Ordered collection, allow duplicates
+	
+Set:
+	-Unordered, does not allow duplicate elements.
+	
+Queue:
+	-Follows FIFO(First In First Out) order
+
+Map:Not a part of collection interface
+	-Stores key-value pairs
+
+
+List Interface:
+----------------
+	-Ordered collection
+	-Allows duplicates elements
+	-Maintains insertion order
+	-Implementation
+		-ArrayList : Dynamic array, fast read access
+		-LinkedList : Doubly Linked list, fast insert/delete
+		-Vector : Thread-safe, legacy classes
+		
+	ArrayList a1 = new ArrayList();
+	ArrayList<String> a1 = new ArrayList<>();
+	ArrayList<Integer> a1 = new ArrayList<>();
+	
+	List l1 = new ArrayList();
+	List<Integer> l1 = new ArrayList<>();
+	
+	Collection c = new ArrayList();
+	Collection<String> c = new ArrayList<>();
+	
+	LinkedList l1 = new LinkedList();
+	LinkedList<String> l1 = new LinkedList<>();
+	
+Set Interface:
+---------------
+	-Unordered
+	-Does not allow duplicate values
+	-Implementation
+		-HashSet : Unordered, fast operations
+		-LinkedHashSet: Maintains insertion order
+		-TreeSet : Sorted order
+		
+	HashSet h1 = new HashSet();
+	LinkedHashSet l1 = new LinkedHashSet();
+	TreeSet t1 = new TreeSet();
+	
+	HashSet<Integer> h1 = new HashSet<>();
+	LinkedHashSet<Float> l1 = new LinkedHashSet<>();
+	TreeSet<String> t1 = new TreeSet<>();
+	
+	Set<Integer> h1 = new HashSet<>();
+	Set<Float> l1 = new LinkedHashSet<>();
+	Set<String> t1 = new TreeSet<>();
+	
+	HashSet<Integer> h1 = new HashSet<>();
+	LinkedHashSet<Float> l1 = new LinkedHashSet<>();
+	SortedSet<String> t1 = new TreeSet<>();
+	
+	Collection<Integer> h1 = new HashSet<>();
+	Collection<Float> l1 = new LinkedHashSet<>();
+	Collection<String> t1 = new TreeSet<>();
+	
+	
+Queue:
+	-FIFO
+	-Implementations
+		-PriorityQueue : Ordered elements based on priority
+		-LinkedList : Deque implementation
+		
+		Queue q1 = new PriorityQueue();
+		Queue<Integer> q1 = new PriorityQueue<>();
+		PriorityQueue<Integer> q1 = new PriorityQueue<>();
+		LinkedList<Integer> q1 = new ArrayDequeue<>();
+		
+Map Interface : Key-Value Pair
+	-Not a part of collection interface
+	-does not allow duplicate keys, but allows duplicate vlaue
+	-Implementations
+		-HashMap : Unordered, fast lookup
+		-LinkedHashMap : Maintain insertion order
+		-TreeMap : sorted keys
+		
+		HomeWork :Todo App:
+		-----------------------
+		while(){
+		sop(Enter choice)
+		1.Add
+		2.view
+		3.remove
+		4.exit
+		
+		enter choice:1
+		}
+		switch(ch)
+		{
+		case 1: 
+		}
+
+-----------------
+Meeting Id: 81940226085
+Key: 12345
+https://docs.oracle.com/javase/8/docs/api/
+------------------------------
+Date: 12/09/2025
+Day 16 : OOPJ
+------------------------------
+Topics-
+	-Generics
+	-Reflection
+	-Inner classes
+	-Multithreading
+	
+Generics:
+-------------
+-Generics allows defining classes, interfaces, and methods with type paprameter.
+-type safety,code reusability, and compile time with type checking
+-Introduced in Java 5: part of Collection Framework
+
+Synatax of Generics:
+---------------------
+class Classname <T>{
+
+}
+
+<T> : represent type parameter
+<T, U, V> : represents multiple parameters
+<E> : Element
+<K,V> : Key, value pair (used in map)
+
+Type Parameter Naming conventions:
+--------------------------------------
+T : Type
+E : Element
+K : Key
+V : Values
+N : Number
+
+
+Genric classes:
+----------------
+-Classes defined with type parameters using <> (diamond brackets)
+-It can accept one or more type parameters.
+
+
+Reflection:
+------------
+-Reflection is a feature that allows programs to inspect and modify classes, methods, fields and constructors at runtime, without knowing their names at compile time.
+
+-Package: java.lang.reflect
+
+Key Classes/Interfaces:
+-----------------------
+class : Represents a class at runtime.
+Method : Represents a method of a class.
+Field : Represents a field(variables) of a class.
+Constructor: Represents a constructor of a class.
+
+Inner classes:
+--------------
+A inner class is a class defined inside another class.
+Types: 
+
+1. Regular Inner class /(Non-static nested class):
+
+-define inside another class without static keyword
+-instance class variable and methods can asccess
+
+
+2.Static Nested Class
+
+3.Method-local Inner Class
+
+4.Anonymous class
+
+
+Lambda Expression:
+-------------------
+-It is a concise way to represent anonymous functions(methods without names)
+-Java 8 for
+-Used to implement functional interfaces(interface with single abstract method)
+-code readability and  to reduce boilerplate code
+
+Syntax:
+
+(parameter) -> expression
+
+or
+
+(parameter) -> {statements}
+
+Functional Interface:
+----------------------
+-Required for Lambda functions
+-It contains exactly one abstract method
+-Ex: Comparator, Callble, Runnable, etc
+-also create custom functional interface @FunctionalInterface
+
+Ex:
+
+@Functional Interface
+interface MyTest{
+	void display();
+
+}
+
+Syntax:
+
+(parameter) -> expression
+
+or
+
+(parameter) -> {statements}
+Ex:
+
+(a,b) -> a*b
+
+(num) -> { System.out.println(num);}
+
+Multithreading:
+-----------------
+-It is a programming technique in Java that allows multiple threads to run concurrently within a single program.
+-Each thread is a separate path of execution.
+-Multithreading is useful for tasks like:
+-Performing background calculations
+-Handling multiple user requests in a web server
+
+Key Benefits:
+--------------
+1. Better CPU utilization
+2. Faster response time
+3. Improved application performance
+4. Useful in parallel processing and asynchronous tasks
+
+Main Thread:
+--------------
+- A thread is the smallest unit of execution in a program.
+- Java is multithreaded: multiple parts (threads) can run concurrently.
+- When any Java application starts, a Main Thread is automatically created by the JVM (Java Virtual Machine).
+- This thread starts execution from the `main()` method.
+
+Properties of Main Thread:
+-----------------------------
+- It is the first thread created when the program begins.
+- Child threads can be spawned from the Main thread.
+- Typically, it is the last to finish, ensuring proper shutdown.
+- The default priority of the main thread is 5 (NORM_PRIORITY).
+- Priority is inherited: child threads inherit priority from the main thread.
+
+
+	
+Main Thread:
+--------------
+- A thread is the smallest unit of execution in a program.
+- Java is multithreaded: multiple parts (threads) can run concurrently.
+- When any Java application starts, a Main Thread is automatically created by the JVM (Java Virtual Machine).
+- This thread starts execution from the `main()` method.
+
+Properties of Main Thread:
+-----------------------------
+- It is the first thread created when the program begins.
+- Child threads can be spawned from the Main thread.
+- Typically, it is the last to finish, ensuring proper shutdown.
+- The default priority of the main thread is 5 (NORM_PRIORITY).
+- Priority is inherited: child threads inherit priority from the main thread.
+	
+	
+Lifecycle and States of a Thread in Java:
+-------------------------------------------
+-A thread in Java goes through multiple states during its lifecycle.
+-At any given time, a thread is in one of six states.
+-Thread States in Java:
+	-New
+	-Runnable
+	-Blocked
+	-Waiting
+	-Timed Waiting
+	-Terminated
+	
+-New → Created but not started (NEW).
+-Runnable → Ready to run but waiting for CPU (RUNNABLE).
+-Blocked → Waiting for another thread to release a lock (BLOCKED).
+-Waiting → Waiting indefinitely (WAITING).
+-Timed Waiting → Waiting for a fixed time (TIMED_WAITING).
+-Terminated → Thread has finished execution (TERMINATED).	
+
+ Single Thread:
+ ------------------
+public class SingleThreadExample {
+    public static void main(String[] args) {
+        System.out.println("T1");
+        System.out.println("T2");
+    }
+}
+
+Multithreading:
+------------------
+class Task extends Thread {
+    public void run() {
+        System.out.println("Running thread: " + Thread.currentThread().getName());
+    }
+
+    public static void main(String[] args) {
+        Task t1 = new Task();
+        Task t2 = new Task();
+        t1.start();
+        t2.start();
+    }
+}
+ 
